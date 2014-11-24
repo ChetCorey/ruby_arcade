@@ -1,18 +1,22 @@
-# This is a Number guessing game
 require 'active_support/inflector'
 
 class GuessingGame
+  attr_accessor :wallet, :player
+
   def initialize
-    @count = 1
+    @count = 0
     @computer_guess = rand(1..100)
+    @wallet = wallet
+    @player = []
   end
 
   def play
     intro
-    round
+    turn
   end
 
-  def round
+  def turn
+    puts @computer_guess
     print "Your guess : "
     human_guess = gets.chomp.to_i
     outcome(human_guess, @computer_guess)
@@ -22,36 +26,14 @@ class GuessingGame
   def outcome(human_guess, computer_guess) #directions are smaller or bigger
     if computer_guess == human_guess
       win
-    elsif human_guess < 1 || human_guess > 100
-      input_error
     elsif computer_guess > human_guess # bigger
       bigger
     elsif computer_guess < human_guess # smaller
       smaller
-    end
-  end
-
-  def guesses_remaining
-    lose if @count >= 5
-    puts "You have #{5 - @count} #{'guess'.pluralize(5 - @count)} left." if @count < 5
-    @count += 1
-    round
-  end
-
-  def input_error
-    puts "Please guess a number between 1 and 100."
-    @count -= 1
-    round
-  end
-
-  def play_again
-    puts "would you like to play again? (y/n)"
-    responce = gets.chomp
-    if responce == 'y'
-      GuessingGame.new.play
-    elsif responce == 'n'
-      puts "thanks for playing"
-      exit
+    else
+      puts "You made an illegal move, guess again."
+      @count -= 1
+      turn
     end
   end
 
@@ -74,7 +56,8 @@ class GuessingGame
     puts "**       WINNER       **"
     puts "**                    **"
     puts "************************"
-    play_again
+    @count = 5
+    @player << "WIN"
   end
 
   def lose
@@ -83,7 +66,8 @@ class GuessingGame
     puts "**      GAME OVER     **"
     puts "**                    **"
     puts "************************"
-    play_again
+    puts "The correct guess was #{@computer_guess}"
+    @player << "LOSE"
   end
 
   def bigger
@@ -112,6 +96,19 @@ class GuessingGame
     puts "||         \\/         ||"
     puts "========================"
   end
-end
 
-GuessingGame.new.play
+  def guesses_remaining
+    @count += 1
+    lose if (@count >= 5) && (@player.last != "WIN")
+    if @count < 5
+      puts "You have #{5 - @count} #{'guess'.pluralize(5 - @count)} left."
+      turn
+    end
+  end
+
+  def replay
+    @count = 0
+    @computer_guess = rand(1..100)
+    play
+  end
+end
