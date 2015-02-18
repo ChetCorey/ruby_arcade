@@ -1,47 +1,23 @@
-load "./guessing_game.rb"
-# require "blackjack.rb"
+# Ruby Arcade
+A fun place to play some games. Check it out
+[online.](http://www.tutorialspoint.com/execute_ruby_online.php?PID=0Bw_CjBb95KQMaGpDREQwWGN1OUk)
 
-class Arcade
-  attr_accessor :points, :player_name
+## How to play locally
+1. To start open your terminal.
+2. Run 'ruby arcade.rb'
 
-  def initialize
-    @player_name = "player 1"
-    @points = 100
-  end
+## Contributing
 
-  def menu
-    puts "******************************************************"
-    puts "**                                                  **"
-    puts "**              WELCOME TO RUBY ARCADE              **"
-    puts "**           WHAT WOULD YOU LIKE TO PLAY?           **"
-    puts "**                                                  **"
-    puts "******************************************************"
-    puts "Chose your game by typing the number"
-    puts "1. Guessing Game"
-    puts "2. BLackjack"
-    puts "Type exit to leave at any time"
-    responce = gets.chomp
-    if responce == "1"
-      @player = GuessingGame.new
-    elsif responce == "2"
-      @player = Blackjack.new
-    else
-      menu
-    end
-    @player.play
-    games
-  end
+If you are new to using git and GitHub, follow these directions:
 
-  def games
-    puts "Would you like to play again (1), go to the game menu (2) or exit (exit)?"
-    responce = gets.chomp
-    if responce == '1'
-      @player.replay
-      games
-    else
-      menu
-    end
-  end
-end
-
-Arcade.new.menu
+1. Fork the project.
+2. Clone _your_ copy.
+3. Add another remote:
+   `git remote add upstream https://github.com/chetcorey/ruby_arcade.git`
+4. Make a local branch for your feature.
+5. Write code.
+6. Test it out.
+7. Run `git fetch upstream` and then `git merge upstream/master` in your branch.
+8. Test again.
+9. Push your branch to your repo.
+10. Make a pull request!

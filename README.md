@@ -1,10 +1,10 @@
 # Ruby Arcade
-A fun place to play some games.
+A fun place to play some games. Check out the live version.
+[an example](http://www.tutorialspoint.com/execute_ruby_online.php?PID=0Bw_CjBb95KQMaEo4UGduWDJILTQ/ "Title") 
 
-## How to play
+## How to play locally
 1. To start open your terminal.
 2. Run 'ruby arcade.rb'
-3. Follow the instructions.
 
 ## Contributing
 

@@ -20,7 +20,7 @@ class GuessingGame
     print "Your guess : "
     human_guess = gets.chomp
     hint if human_guess.to_s.downcase == "hint"
-    puts human_guess = human_guess.to_i
+    human_guess = human_guess.to_i
     outcome(human_guess, @computer_guess)
     guesses_remaining
   end
