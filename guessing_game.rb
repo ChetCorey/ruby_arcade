@@ -16,24 +16,33 @@ class GuessingGame
   end
 
   def turn
-    puts @computer_guess
+    # puts @computer_guess
     print "Your guess : "
-    human_guess = gets.chomp.to_i
+    human_guess = gets.chomp
+    hint if human_guess.to_s.downcase == "hint"
+    puts human_guess = human_guess.to_i
     outcome(human_guess, @computer_guess)
     guesses_remaining
   end
 
+  def hint
+    puts "The number is between " + (@computer_guess - rand(1..10)).to_s + " and " + (@computer_guess + rand(1..10)).to_s
+    turn
+  end
+
   def outcome(human_guess, computer_guess) #directions are smaller or bigger
-    if computer_guess == human_guess
+    if human_guess <= 0  || human_guess >= 100
+      puts "You made an illegal move, guess again."
+      turn
+    elsif computer_guess == human_guess
       win
+    elsif @count >= 4
+      lose
+      return
     elsif computer_guess > human_guess # bigger
       bigger
     elsif computer_guess < human_guess # smaller
       smaller
-    else
-      puts "You made an illegal move, guess again."
-      @count -= 1
-      turn
     end
   end
 
@@ -99,7 +108,6 @@ class GuessingGame
 
   def guesses_remaining
     @count += 1
-    lose if (@count >= 5) && (@player.last != "WIN")
     if @count < 5
       puts "You have #{5 - @count} #{'guess'.pluralize(5 - @count)} left."
       turn
