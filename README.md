@@ -1,6 +1,6 @@
 # Ruby Arcade
 A fun place to play some games. Check out the live version.
-[an example](http://www.tutorialspoint.com/execute_ruby_online.php?PID=0Bw_CjBb95KQMaEo4UGduWDJILTQ/ "Title") 
+[an example](http://www.tutorialspoint.com/execute_ruby_online.php?PID=0Bw_CjBb95KQMaEo4UGduWDJILTQ/ "Title")
 
 ## How to play locally
 1. To start open your terminal.
