@@ -21,4 +21,3 @@ If you are new to using git and GitHub, follow these directions:
 8. Test again.
 9. Push your branch to your repo.
 10. Make a pull request!
-other st
